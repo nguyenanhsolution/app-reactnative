@@ -41,6 +41,16 @@ export default function App() {
 
   const [school, setSchool] = useState(['FPT','VNPT','Viettel']);
 
+  const[todoList, setTodoList] = useState<{ id: number, title: string, completed: boolean }[]>([
+    { id: 1, title: 'Learn React Native', completed: false },
+    { id: 2, title: 'Build a mobile app', completed: false },
+    { id: 3, title: 'Deploy the app', completed: true },
+    { id: 4, title:'Learn English', completed:false},
+    { id: 5, title:'Learn Japanese', completed:false},
+    { id: 6, title:'Learn Korean', completed:false},
+    { id: 7, title:'Learn Chinese', completed:false}
+  ]);
+
   const [name, setName] = useState<string>();
   return (
     <View style={styles.container}>
@@ -55,7 +65,19 @@ export default function App() {
       borderWidth: 1, marginTop: 10, marginBottom:10,borderRadius: 10
      }} placeholder='Nhap vao thong tin'/>
       <Text style={styles.textNew}>{name}</Text>
-     <Button title ="Submit" />
+
+     <Button title ="Add New"
+     onPress={() => alert("Xin Chao " + name)}  
+      />
+
+
+      <View>
+        {todoList.map((todo) => {
+          return (<Text key={todo.id} style={styles.classTodo}>{todo.title}</Text>)
+        })}
+      </View>
+
+
       <Text style={styles.textNew}>{person2.province}</Text>
       <Text style={styles.textNew}>{person3.name}</Text>
       <Text style={styles.textNew}>{hobbies[2]}</Text>
@@ -73,12 +95,24 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
     paddingTop: 20,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    marginTop: 50
   },
 
   textNew: {
     fontWeight: 'bold',
     color: 'blue',
+  },
+
+  classTodo: {
+    fontWeight: 'bold',
+    color: 'white',
+    backgroundColor: 'purple',
+    padding: 10,
+    borderRadius: 10,
+    fontSize: 14,
+    marginTop: 5,
+    marginBottom: 5
   },
 
 });
