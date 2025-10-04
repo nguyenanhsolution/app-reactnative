@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
 
@@ -70,12 +70,11 @@ export default function App() {
      onPress={() => alert("Xin Chao " + name)}  
       />
 
-
-      <View>
+      <ScrollView style={{marginTop:20}}>
         {todoList.map((todo) => {
           return (<Text key={todo.id} style={styles.classTodo}>{todo.title}</Text>)
         })}
-      </View>
+      </ScrollView>
 
 
       <Text style={styles.textNew}>{person2.province}</Text>
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'purple',
     padding: 10,
     borderRadius: 10,
-    fontSize: 14,
+    fontSize: 50,
     marginTop: 5,
     marginBottom: 5
   },
